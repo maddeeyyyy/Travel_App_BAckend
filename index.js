@@ -18,7 +18,11 @@ const connectDB = require("./config/dbconfig");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [process.env.FRONTEND_URI],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+
+}));
 app.use(express.json());
 connectDB();
 
